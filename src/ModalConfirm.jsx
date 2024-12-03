@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types';
 
 const ModalConfirm = ({ question, confirmAction, cancelAction, modalId }) => {
     return (
@@ -13,13 +13,20 @@ const ModalConfirm = ({ question, confirmAction, cancelAction, modalId }) => {
                         {question}
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={cancelAction}>Não</button>
+                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={cancelAction}>Não</button>
                         <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={confirmAction}>Sim</button>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
+ModalConfirm.propTypes = {
+    question: PropTypes.string.isRequired,
+    confirmAction: PropTypes.func.isRequired,
+    cancelAction: PropTypes.func,
+    modalId: PropTypes.string.isRequired
+};
 
 export default ModalConfirm
